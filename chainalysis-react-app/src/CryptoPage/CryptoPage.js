@@ -3,13 +3,15 @@ import socketio from "socket.io-client";
 import { ConnectionStatus } from "../consts";
 import CryptoView from "./view/CryptoView";
 
+const HOST = '157.230.232.188:8001'
+
 function CryptoPage() {
 
     const [data, setData] = useState({})
     const [connectionStatus, setConnectionStatus] = useState(ConnectionStatus.INIT)
 
     useEffect(() => {
-        const socket = socketio('http://localhost:8001')
+        const socket = socketio(HOST)
 
         socket.on("connect", () => {
             setConnectionStatus(ConnectionStatus.CONNECTED)
