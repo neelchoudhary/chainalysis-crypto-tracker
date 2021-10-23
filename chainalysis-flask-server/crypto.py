@@ -1,10 +1,8 @@
-from logging import debug
 from flask import Flask
 from flask_socketio import SocketIO
 from apscheduler.schedulers.background import BackgroundScheduler
 import atexit
 import os
-
 from models import ExchangeDataAPI, DataStore, CoinbaseExchangeAPI, BinanceExchangeAPI
 
 RETRIEVE_PRICES_DELAY = 2
@@ -13,7 +11,7 @@ CRYPTO_TICKERS = ['btc', 'eth']
 PORT = 8001
 ALLOWED_ORIGIN = 'http://localhost:3000'
 
-# Scheduled function to recieve latest price data & update the data store. 
+# Scheduled function to receive latest price data & update the data store. 
 def retrieve_prices(ds, dataAPI):
     data_list, error_list = dataAPI.get_all_ticker_data()
     ds.update_data_store(data_list, error_list)

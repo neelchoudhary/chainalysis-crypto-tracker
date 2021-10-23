@@ -1,4 +1,3 @@
-
 from abc import ABC, abstractmethod
 import cbpro
 from binance.client import Client
