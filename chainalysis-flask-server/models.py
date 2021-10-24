@@ -47,11 +47,6 @@ class CoinbaseExchangeAPI(ExchangeAPI):
 
 
 class BinanceExchangeAPI(ExchangeAPI):
-
-    def __init__(self, api_key, api_secret):
-        self.api_key = api_key
-        self.api_secret = api_secret
-
     name = "Binance"
 
     ticker_map = {
@@ -60,7 +55,7 @@ class BinanceExchangeAPI(ExchangeAPI):
     }
 
     def establish_connection(self):
-        self.client = Client(self.api_key, self.api_secret)
+        self.client = Client()
 
     def get_ticker_data(self, ticker):
         ticker_info = self.client.get_ticker(symbol=self.ticker_map[ticker])
@@ -90,6 +85,12 @@ class ExchangeData:
         self.ticker = ticker
         self.buy = buy
         self.sell = sell
+
+    def __str__(self):
+        return self.exchange + ": " + self.ticker + ", buy: " + str(self.buy) + ", sell: " + str(self.sell)
+
+    def __repr__(self):
+        return str(self)
 
 
 class ExchangeDataAPI:
