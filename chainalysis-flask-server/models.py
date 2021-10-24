@@ -11,7 +11,7 @@ class ExchangeAPI(ABC):
         pass
 
     @abstractmethod
-    # Get ticker price data aand return an ExchangeData object
+    # Get ticker price data and return an ExchangeData object
     def get_ticker_data(self, ticker):
         pass
 
