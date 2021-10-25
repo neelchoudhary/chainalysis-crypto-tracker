@@ -34,7 +34,8 @@ Frontend React app
 ## Questionnaire:
 ##### 1. Are there any sub-optimal choices( or short cuts taken due to limited time ) in your implementation?
 I would split the flask server into two separate services. One two handle getting crypto data from the exchange APIs, and the other to handle processing and the data & sending the best buy / best sell data to the frontend. 
-Also, I would prefer to use websockets to stream data from Coinbase & Binance instead of polling them every X seconds. 
+Also, I would prefer to use websockets to stream data from Coinbase & Binance instead of polling them every 2 seconds. 
+Lastly, if I had more time, I would have used Go for its performance & low latency benefits.  
 
 ##### 2. Is any part of it over-designed? ( It is fine to over-design to showcase your skills as long as you are clear about it)
 I designed the server to make it easy to add additional cryptocurrencies & additional exchanges by using object oriented design. 
@@ -46,5 +47,5 @@ I would also place a load balancer in front of the price-retrieval service to ke
 Lastly, I would use a reverse proxy like nginx to serve & load balance the react app. 
 
 ##### 4. What are some other enhancements you would have made, if you had more time to do this implementation
-For deployment, I would use TLS/SSL to to encrypt the data. 
+For deployment, I would use TLS to encrypt the network traffic via HTTPS. 
 I would build on the error handling to log any error and maybe display error messages on the front end. 
