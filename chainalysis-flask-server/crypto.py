@@ -5,8 +5,8 @@ import atexit
 from models import ExchangeDataAPI, DataStore, CoinbaseExchangeAPI, BinanceExchangeAPI
 from threading import Lock
 
-RETRIEVE_PRICES_DELAY = 1.5
-SEND_DATA_DELAY = 1.5
+RETRIEVE_PRICES_DELAY = 2
+SEND_DATA_DELAY = 2
 CRYPTO_TICKERS = ['btc', 'eth']
 PORT = 8001
 ALLOWED_ORIGIN = 'http://localhost:3000'
@@ -50,7 +50,7 @@ def run_app():
     cryptoExchangeDataAPI = ExchangeDataAPI([CoinbaseExchangeAPI(), BinanceExchangeAPI()], CRYPTO_TICKERS)
     cryptoExchangeDataAPI.connect()
 
-    # Setup background scheduling to retrieve price data every 1.5 seconds.
+    # Setup background scheduling to retrieve price data every 2 seconds.
     scheduler = BackgroundScheduler(daemon=True)
     scheduler.add_job(lambda: retrieve_prices(cryptoExchangeDataAPI), 'interval', seconds=RETRIEVE_PRICES_DELAY)
     atexit.register(lambda: scheduler.shutdown())

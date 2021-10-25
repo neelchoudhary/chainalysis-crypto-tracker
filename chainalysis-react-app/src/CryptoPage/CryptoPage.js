@@ -3,7 +3,7 @@ import socketio from "socket.io-client";
 import { ConnectionStatus } from "../consts";
 import CryptoView from "./view/CryptoView";
 
-const HOST = '157.230.232.188:8001'
+const HOST = 'localhost:8001'
 
 function CryptoPage() {
 
@@ -30,9 +30,9 @@ function CryptoPage() {
             setData(data['crypto-price-data'])
         })
 
-        socket.on("exchange-health-stream", (data) => {
-            console.log(data['exchange-health-data'])
-        })
+        // socket.on("exchange-health-stream", (data) => {
+            
+        // })
 
         return () => socket.disconnect();
       }, []);

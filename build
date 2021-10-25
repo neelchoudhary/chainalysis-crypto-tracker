@@ -1,0 +1,4 @@
+#!/bin/bash
+
+docker build -t cryptotrackerapp:latest chainalysis-react-app
+docker build -t cryptotrackerserver:latest chainalysis-flask-server
