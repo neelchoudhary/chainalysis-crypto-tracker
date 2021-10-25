@@ -24,11 +24,11 @@ ds = DataStore()
 # Scheduled function to receive latest price data & update the data store.
 def retrieve_prices(dataAPI):
     global ds
-
     data_list, error_list = dataAPI.get_all_ticker_data()
     ds.update_data_store(data_list, error_list)
 
 
+# Start sending data when client connects
 @socketio.event
 def connect():
     global thread
@@ -37,6 +37,7 @@ def connect():
             thread = socketio.start_background_task(send_data_thread)
 
 
+# Send data every 2 secondss
 def send_data_thread():
     global ds
     while True:
@@ -55,8 +56,9 @@ def run_app():
     scheduler.add_job(lambda: retrieve_prices(cryptoExchangeDataAPI), 'interval', seconds=RETRIEVE_PRICES_DELAY)
     atexit.register(lambda: scheduler.shutdown())
 
-    # Run app
+    # Run scheduler & server
     scheduler.start()
+    print("SERVER STARTED ON PORT " + str(PORT))
     socketio.run(app, port=PORT, host='0.0.0.0')
 
 

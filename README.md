@@ -12,9 +12,9 @@ Make sure you have ports 8001 and 3000 free.
 
 #### Instructions: 
 1. Clone this repo. 
-2. Run ./build
-3. Run ./start_server to start the flask server on port 8001. 
-4. In a separate terminal, run ./start_app to run the react app on port 3000. 
+2. Run ```./build``` (this may take a couple minutes)
+3. Run ```./start_server``` to start the flask server on port 8001. 
+4. In a separate terminal, run ```./start_app``` to run the react app on port 3000. 
 5. Open http://localhost:3000/ in your browser (preferably Chrome). 
 6. With the website open, click "Connect" to see live price data. 
 

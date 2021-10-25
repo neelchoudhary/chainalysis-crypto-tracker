@@ -30,10 +30,6 @@ function CryptoPage() {
             setData(data['crypto-price-data'])
         })
 
-        // socket.on("exchange-health-stream", (data) => {
-            
-        // })
-
         return () => socket.disconnect();
       }, []);
     
